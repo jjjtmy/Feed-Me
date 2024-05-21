@@ -1,29 +1,22 @@
 import { useState } from "react";
 import "./App.css";
-import { Route, Switch, Link, Redirect } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+
+import Home from "./Pages/Home";
+import SavedSearchList from "./Pages/SavedSearchList";
 
 function App() {
   return (
     <div>
       <nav>
         <Link to="/">
-          <img
-            src="https://cherwell.org/wp-content/uploads/2024/04/ramadan.webp"
-            alt=""
-          />
           <h1>FEED ME</h1>
         </Link>
         <Link to="/savedSearchList">My Saved Searches</Link>
       </nav>
       <main>
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-          <Route path="/savedSearchList">
-            <savedSearchList />
-          </Route>
-        </Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/savedSearchList" component={SavedSearchList} />
       </main>
     </div>
   );

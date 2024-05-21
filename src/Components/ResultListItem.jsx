@@ -1,3 +1,3 @@
-export default function ResultListItem() {
-  return <></>;
+export default function ResultListItem({ eachResult }) {
+  return <>{eachResult.title}</>;
 }
