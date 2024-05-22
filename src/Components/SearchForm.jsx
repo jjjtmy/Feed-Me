@@ -6,20 +6,22 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import ResultList from "./ResultList";
 
-export default function SearchForm() {
+export default function SearchForm({ performSearch }) {
   const [sliderValueCarb, setSliderValueCarb] = useState([]);
   const [sliderValueProtein, setSliderValueProtein] = useState([]);
   const [sliderValueFat, setSliderValueFat] = useState([]);
   const [mealType, setMealType] = useState([]);
 
-  // const handleClick = () => {
-  //   let url = `&minCarbs=${sliderValueCarb[0]}&maxCarbs=${sliderValueCarb[1]}&minProtein=${sliderValueProtein[0]}&maxProtein=${sliderValueProtein[1]}&minFat=${sliderValueFat[0]}&maxFat=${sliderValueFat[1]}&type=${mealType}`;
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    performSearch(
+      `&minCarbs=${sliderValueCarb[0]}&maxCarbs=${sliderValueCarb[1]}&minProtein=${sliderValueProtein[0]}&maxProtein=${sliderValueProtein[1]}&minFat=${sliderValueFat[0]}&maxFat=${sliderValueFat[1]}&type=${mealType}`
+    );
+  };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <h3>Carbohydrate</h3>
       <RangeSlider
         min={0}
@@ -80,8 +82,7 @@ export default function SearchForm() {
         <option value="main course">Main Course</option>
         <option value="snack">Snack</option>
       </Select>
-      <button>Feed Me!</button>
-      {/* <ResultList url={url} /> */}
-    </>
+      <button type="submit">Feed Me!</button>
+    </form>
   );
 }
