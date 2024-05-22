@@ -1,3 +1,8 @@
 export default function ResultListItem({ eachResult }) {
-  return <>{eachResult.title}</>;
+  return (
+    <li>
+      <img src={eachResult.image} />
+      <div>{eachResult.title}</div>
+    </li>
+  );
 }
