@@ -8,11 +8,13 @@ import {
 import { useState } from "react";
 
 export default function SearchForm({ performSearch }) {
+  //update state of each search criteria
   const [sliderValueCarb, setSliderValueCarb] = useState([]);
   const [sliderValueProtein, setSliderValueProtein] = useState([]);
   const [sliderValueFat, setSliderValueFat] = useState([]);
   const [mealType, setMealType] = useState([]);
 
+  //submit path to fetch api based on search criteria
   const handleSubmit = (e) => {
     e.preventDefault();
     performSearch(
@@ -20,15 +22,15 @@ export default function SearchForm({ performSearch }) {
     );
   };
 
-  
+  // add search criteria as a saved search
   const addSavedSearch = () => {
-  return {
-      Carbs: ${sliderValueCarb[0]}-${sliderValueCarb[1]},
-      Protein: ${sliderValueProtein[0]}-${sliderValueProtein[1]},
-      Fat: ${sliderValueFat[0]}-${sliderValueFat[1]},
-      Type: ${mealType}
+    return {
+      Carbs: `${sliderValueCarb[0]} to ${sliderValueCarb[1]}`,
+      Protein: `${sliderValueProtein[0]} to ${sliderValueProtein[1]}`,
+      Fat: `${sliderValueFat[0]} to ${sliderValueFat[1]}`,
+      Type: mealType,
     };
-  }
+  };
 
   return (
     <>
@@ -95,7 +97,7 @@ export default function SearchForm({ performSearch }) {
         </Select>
         <button type="submit">Feed Me!</button>
       </form>
-      {/* <button onClick={addSavedSearch}>Save this search</button> */}
+      <button onClick={addSavedSearch}>Save this search</button>
     </>
   );
 }

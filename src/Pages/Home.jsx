@@ -5,8 +5,8 @@ import ResultList from "../Components/ResultList";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [recipeSearch, setRecipeSearch] = useState();
-  const [resultList, setResultList] = useState();
+  const [recipeSearch, setRecipeSearch] = useState("");
+  const [resultList, setResultList] = useState([]);
 
   const performSearch = (value) => setRecipeSearch(value);
 
@@ -16,10 +16,12 @@ export default function Home() {
 
   const getResult = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=54ddd5a828fa4d01bf9546fe1d854603${recipeSearch}&number=3`
+      `https://api.spoonacular.com/recipes/random?apiKey=54ddd5a828fa4d01bf9546fe1d854603${
+        !recipeSearch ? "" : recipeSearch
+      }&number=3`
     );
     const data = await api.json();
-    console.log(data);
+    console.log(data, recipeSearch);
     setResultList(data.recipes);
   };
 
