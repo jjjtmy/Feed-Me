@@ -12,7 +12,7 @@ function App() {
         <Link to="/">
           <h1>FEED ME</h1>
         </Link>
-        <Link to="/savedSearchList">My Saved Searches</Link>
+        <Link to="/SavedSearchList">My Saved Searches</Link>
       </nav>
       <main>
         <Route exact path="/" component={Home} />

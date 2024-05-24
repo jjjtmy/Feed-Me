@@ -22,15 +22,15 @@ export default function SearchForm({ performSearch }) {
     );
   };
 
-  // add search criteria as a saved search
-  const addSavedSearch = () => {
-    return {
-      Carbs: `${sliderValueCarb[0]} to ${sliderValueCarb[1]}`,
-      Protein: `${sliderValueProtein[0]} to ${sliderValueProtein[1]}`,
-      Fat: `${sliderValueFat[0]} to ${sliderValueFat[1]}`,
-      Type: mealType,
-    };
-  };
+  // create object with search criteria
+  // const addSavedSearch = () => {
+  //   return {
+  //     Carbs: `${sliderValueCarb[0]} to ${sliderValueCarb[1]}`,
+  //     Protein: `${sliderValueProtein[0]} to ${sliderValueProtein[1]}`,
+  //     Fat: `${sliderValueFat[0]} to ${sliderValueFat[1]}`,
+  //     Type: mealType,
+  //   };
+  // };
 
   return (
     <>
@@ -97,7 +97,7 @@ export default function SearchForm({ performSearch }) {
         </Select>
         <button type="submit">Feed Me!</button>
       </form>
-      <button onClick={addSavedSearch}>Save this search</button>
+      <button>Save this search</button>
     </>
   );
 }

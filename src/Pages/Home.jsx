@@ -32,6 +32,7 @@ export default function Home() {
         src="https://cherwell.org/wp-content/uploads/2024/04/ramadan.webp"
         alt=""
       /> */}
+      {/* render onyl when feed me is clicked */}
       <ResultList resultList={resultList} />
       {/* <Footer></Footer> */}
     </>
