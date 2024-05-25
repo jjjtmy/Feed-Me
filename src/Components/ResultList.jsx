@@ -45,6 +45,7 @@ export default function ResultList({
       }),
     });
     const jsonData = await response.json();
+    alert("Successfully saved your meal plan");
     // console.log(json.fields);
     // if (response.ok) {
     // const mealPlanData = [
