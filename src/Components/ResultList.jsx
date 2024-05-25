@@ -31,9 +31,8 @@ export default function ResultList({
     }));
   };
 
-  //create object to "post" as updated search criteria
+  //Update saved meal plan
   async function createMealPlan() {
-    //Update saved search criteria
     const response = await fetch(`${BASE_URL}`, {
       method: "POST",
       headers: {
@@ -46,28 +45,6 @@ export default function ResultList({
     });
     const jsonData = await response.json();
     alert("Successfully saved your meal plan");
-    // console.log(json.fields);
-    // if (response.ok) {
-    // const mealPlanData = [
-    //   {
-    //     ...jsonData.fields,
-    //     id: jsonData.id,
-    //   },
-    //   /*
-    //     {
-    //       "Company": "Not Ninja Van",
-    //       "Role": "Data Scientist",
-    //       "YOE": 1,
-    //       "Salary": 72000,
-    //       id: 2314
-    //     }
-    //     */
-    //   ...mySavedSeaches,
-    // ];
-
-    // setMySavedSearches(savedSearchData);
-    // setShowAddModal(false);
-    // }
   }
 
   return (

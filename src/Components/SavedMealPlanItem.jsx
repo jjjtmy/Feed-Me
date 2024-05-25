@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
   const [breakfastInfo, setBreakfastInfo] = useState(null);
   const [lunchInfo, setLunchInfo] = useState(null);
   const [dinnerInfo, setDinnerInfo] = useState(null);
+
+  const history = useHistory();
 
   const getRecipeInfo = async (id, setInfo) => {
     try {
@@ -12,7 +15,6 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       );
       const data = await response.json();
       setInfo(data);
-      console.log(data);
     } catch (error) {
       console.error("Error fetching recipe info:", error);
     }
@@ -23,6 +25,10 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
     getRecipeInfo(eachSave.LunchID, setLunchInfo);
     getRecipeInfo(eachSave.DinnerID, setDinnerInfo);
   }, [eachSave]);
+
+  const handleEditMealPlan = () => {
+    history.push("/");
+  };
 
   return (
     <div>
@@ -64,7 +70,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           "Loading..."
         )}
       </p>
-      <button>Edit Criteria</button>
+      <button onClick={handleEditMealPlan}>Edit Meal Plan</button>
       <button onClick={() => deleteMealPlan(eachSave.id)}>Delete</button>
     </div>
   );

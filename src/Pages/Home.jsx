@@ -30,7 +30,6 @@ export default function Home() {
       }&type=breakfast&number=3&offset=${Math.floor(Math.random() * 10)}`
     );
     const data = await api.json();
-    console.log(data, recipeSearch);
     setResultListBreakfast(data.results);
   };
 
@@ -45,7 +44,6 @@ export default function Home() {
       }&type=main-course&number=3&offset=${Math.floor(Math.random() * 10)}`
     );
     const data = await api.json();
-    console.log(data, recipeSearch);
     setResultListLunch(data.results);
   };
 
@@ -60,7 +58,6 @@ export default function Home() {
       }&type=main-course&number=3&offset=${Math.floor(Math.random() * 10)}`
     );
     const data = await api.json();
-    console.log(data, recipeSearch);
     setResultListDinner(data.results);
   };
 
@@ -84,6 +81,7 @@ export default function Home() {
         handleRefreshLunch={handleRefreshLunch}
         handleRefreshDinner={handleRefreshDinner}
         chosenDay={chosenDay}
+        // performSearch={performSearch}
       />
       {/* <Footer></Footer> */}
     </>

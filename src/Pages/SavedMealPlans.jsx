@@ -28,7 +28,6 @@ export default function SavedMealPlans() {
       ...data.fields,
       id: data.id,
     }));
-    console.log(mealPlanData);
     setMySavedMealPlans(mealPlanData);
   }
 
@@ -39,7 +38,6 @@ export default function SavedMealPlans() {
 
   //Delete saved search from airtable
   async function deleteMealPlan(id) {
-    console.log(`Deleting record with ID: ${id}`);
     try {
       const response = await fetch(`${BASE_URL}/${id}`, {
         method: "DELETE",

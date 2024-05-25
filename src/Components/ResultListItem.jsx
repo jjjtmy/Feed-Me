@@ -3,20 +3,19 @@ import { useEffect, useState } from "react";
 export default function ResultListItem({ eachResult, selectMeal }) {
   const [recipe, setRecipe] = useState(null);
 
-  const getRecipeInfo = async (id) => {
-    try {
-      const response = await fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=54ddd5a828fa4d01bf9546fe1d854603`
-      );
-      const data = await response.json();
-      setRecipe(data);
-      console.log(data);
-    } catch (error) {
-      console.error("Error fetching recipe info:", error);
-    }
-  };
-
   useEffect(() => {
+    const getRecipeInfo = async (id) => {
+      try {
+        const response = await fetch(
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=54ddd5a828fa4d01bf9546fe1d854603`
+        );
+        const data = await response.json();
+        setRecipe(data);
+      } catch (error) {
+        console.error("Error fetching recipe info:", error);
+      }
+    };
+
     getRecipeInfo(eachResult.id);
   }, [eachResult]);
 
