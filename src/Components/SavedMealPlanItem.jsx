@@ -30,14 +30,14 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       <p>
         Breakfast
         {breakfastInfo ? (
-          <>
+          <a href={breakfastInfo.sourceUrl} target="_blank">
             <img
               src={breakfastInfo.image}
               alt={breakfastInfo.title}
               width="100"
             />
             {breakfastInfo.title}
-          </>
+          </a>
         ) : (
           "Loading..."
         )}
@@ -45,10 +45,10 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       <p>
         Lunch
         {lunchInfo ? (
-          <>
+          <a href={lunchInfo.sourceUrl} target="_blank">
             <img src={lunchInfo.image} alt={lunchInfo.title} width="100" />
             {lunchInfo.title}
-          </>
+          </a>
         ) : (
           "Loading..."
         )}
@@ -56,10 +56,10 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       <p>
         Dinner
         {dinnerInfo ? (
-          <>
+          <a href={dinnerInfo.sourceUrl} target="_blank">
             <img src={dinnerInfo.image} alt={dinnerInfo.title} width="100" />
             {dinnerInfo.title}
-          </>
+          </a>
         ) : (
           "Loading..."
         )}
