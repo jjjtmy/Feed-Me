@@ -73,16 +73,20 @@ export default function Home() {
         alt=""
       /> */}
       {/* render onyl when feed me is clicked */}
-      <ResultList
-        resultListBreakfast={resultListBreakfast}
-        resultListLunch={resultListLunch}
-        resultListDinner={resultListDinner}
-        handleRefreshBreakfast={handleRefreshBreakfast}
-        handleRefreshLunch={handleRefreshLunch}
-        handleRefreshDinner={handleRefreshDinner}
-        chosenDay={chosenDay}
-        // performSearch={performSearch}
-      />
+      {!recipeSearch ? (
+        ""
+      ) : (
+        <ResultList
+          resultListBreakfast={resultListBreakfast}
+          resultListLunch={resultListLunch}
+          resultListDinner={resultListDinner}
+          handleRefreshBreakfast={handleRefreshBreakfast}
+          handleRefreshLunch={handleRefreshLunch}
+          handleRefreshDinner={handleRefreshDinner}
+          chosenDay={chosenDay}
+          // performSearch={performSearch}
+        />
+      )}
       {/* <Footer></Footer> */}
     </>
   );
