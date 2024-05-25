@@ -1,7 +1,8 @@
-export default function SavedSearchListItem({ eachSave, deleteSavedSearches }) {
-  //onclick function for search now
-  //onclick function to edit criteria --> open modal for new search form + update airtable
-
+export default function SavedMealPlanItem({
+  eachSave,
+  deleteSavedSearches,
+  updateSavedSearches,
+}) {
   return (
     <div>
       {console.log(eachSave.id)}
@@ -16,7 +17,10 @@ export default function SavedSearchListItem({ eachSave, deleteSavedSearches }) {
       </p>
       <p>Meal Type: {eachSave.type}</p>
       <button> Search Now </button>
-      <button> Edit Criteria </button>
+      <button onClick={() => updateSavedSearches(eachSave.id)}>
+        {" "}
+        Edit Criteria{" "}
+      </button>
       <button onClick={() => deleteSavedSearches(eachSave.id)}>Delete</button>
     </div>
   );

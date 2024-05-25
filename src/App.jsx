@@ -3,7 +3,7 @@ import "./App.css";
 import { Route, Link } from "react-router-dom";
 
 import Home from "./Pages/Home";
-import SavedSearchList from "./Pages/SavedSearchList";
+import SavedMealPlans from "./Pages/SavedMealPlans";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       </nav>
       <main>
         <Route exact path="/" component={Home} />
-        <Route exact path="/savedSearchList" component={SavedSearchList} />
+        <Route exact path="/savedMealPlans" component={SavedMealPlans} />
       </main>
     </div>
   );

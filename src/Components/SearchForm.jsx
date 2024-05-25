@@ -7,34 +7,38 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-export default function SearchForm({ performSearch }) {
+export default function SearchForm({ performSearch, getDay }) {
   //update state of each search criteria
   const [sliderValueCarb, setSliderValueCarb] = useState([]);
   const [sliderValueProtein, setSliderValueProtein] = useState([]);
   const [sliderValueFat, setSliderValueFat] = useState([]);
-  const [mealType, setMealType] = useState([]);
+  const [day, setDay] = useState("");
 
   //submit path to fetch api based on search criteria
   const handleSubmit = (e) => {
     e.preventDefault();
     performSearch(
-      `&minCarbs=${sliderValueCarb[0]}&maxCarbs=${sliderValueCarb[1]}&minProtein=${sliderValueProtein[0]}&maxProtein=${sliderValueProtein[1]}&minFat=${sliderValueFat[0]}&maxFat=${sliderValueFat[1]}&type=${mealType}`
+      `&minCarbs=${sliderValueCarb[0]}&maxCarbs=${sliderValueCarb[1]}&minProtein=${sliderValueProtein[0]}&maxProtein=${sliderValueProtein[1]}&minFat=${sliderValueFat[0]}&maxFat=${sliderValueFat[1]}`
     );
+    getDay(`${day}`);
   };
-
-  // create object with search criteria
-  // const addSavedSearch = () => {
-  //   return {
-  //     Carbs: `${sliderValueCarb[0]} to ${sliderValueCarb[1]}`,
-  //     Protein: `${sliderValueProtein[0]} to ${sliderValueProtein[1]}`,
-  //     Fat: `${sliderValueFat[0]} to ${sliderValueFat[1]}`,
-  //     Type: mealType,
-  //   };
-  // };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <Select
+          placeholder="Select day"
+          onChange={(event) => setDay(event.target.value)}
+        >
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </Select>
+        <h3>How much nutrients would you like to have for each meal?</h3>
         <h3>Carbohydrate</h3>
         <RangeSlider
           min={0}
@@ -86,18 +90,8 @@ export default function SearchForm({ performSearch }) {
         <div>
           min:{sliderValueFat[0]} max:{sliderValueFat[1]}
         </div>
-
-        <Select
-          placeholder="Select meal type"
-          onChange={(event) => setMealType(event.target.value)}
-        >
-          <option value="breakfast">Breakfast</option>
-          <option value="main course">Main Course</option>
-          <option value="snack">Snack</option>
-        </Select>
         <button type="submit">Feed Me!</button>
       </form>
-      <button>Save this search</button>
     </>
   );
 }
