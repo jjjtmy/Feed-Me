@@ -2,6 +2,10 @@ import { useState } from "react";
 
 import ResultListItem from "./ResultListItem";
 
+const TOKEN = import.meta.env.VITE_API_KEY;
+const BASE_URL =
+  "https://api.airtable.com/v0/appP9vfckMuV8QzU5/Saved%20Meal%20Plans";
+
 export default function ResultList({
   resultListBreakfast,
   resultListLunch,
@@ -19,7 +23,6 @@ export default function ResultList({
     DinnerID: "",
   });
 
-  // const [recipeId, setRecipeId] = useState("");
   const selectMeal = (mealType, id) => {
     setMealPlan((prevMealPlan) => ({
       ...prevMealPlan,
@@ -28,7 +31,43 @@ export default function ResultList({
     }));
   };
 
-  // const selectMeal = (val) => setMealPlan(...mealPlan, val);
+  //create object to "post" as updated search criteria
+  async function createMealPlan() {
+    //Update saved search criteria
+    const response = await fetch(`${BASE_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify({
+        fields: mealPlan,
+      }),
+    });
+    const jsonData = await response.json();
+    // console.log(json.fields);
+    // if (response.ok) {
+    // const mealPlanData = [
+    //   {
+    //     ...jsonData.fields,
+    //     id: jsonData.id,
+    //   },
+    //   /*
+    //     {
+    //       "Company": "Not Ninja Van",
+    //       "Role": "Data Scientist",
+    //       "YOE": 1,
+    //       "Salary": 72000,
+    //       id: 2314
+    //     }
+    //     */
+    //   ...mySavedSeaches,
+    // ];
+
+    // setMySavedSearches(savedSearchData);
+    // setShowAddModal(false);
+    // }
+  }
 
   return (
     <div>
@@ -76,7 +115,7 @@ export default function ResultList({
         })}
       </ul>
       {console.log(mealPlan)}
-      <button onClick={console.log(mealPlan)}>Save Meal Plan</button>
+      <button onClick={createMealPlan}>Save Meal Plan</button>
     </div>
   );
 }
