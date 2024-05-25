@@ -23,13 +23,11 @@ export default function Home() {
     getResultDinner();
   }, [recipeSearch]);
 
-  const offset = Math.floor(Math.random() * 10);
-
   const getResultBreakfast = async () => {
     const api = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=54ddd5a828fa4d01bf9546fe1d854603${
         !recipeSearch ? "" : recipeSearch
-      }&type=breakfast&number=3&offset=${offset}`
+      }&type=breakfast&number=3&offset=${Math.floor(Math.random() * 10)}`
     );
     const data = await api.json();
     console.log(data, recipeSearch);
@@ -44,7 +42,7 @@ export default function Home() {
     const api = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=54ddd5a828fa4d01bf9546fe1d854603${
         !recipeSearch ? "" : recipeSearch
-      }&type=main-course&number=3&offset=${offset}`
+      }&type=main-course&number=3&offset=${Math.floor(Math.random() * 10)}`
     );
     const data = await api.json();
     console.log(data, recipeSearch);
@@ -59,7 +57,7 @@ export default function Home() {
     const api = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=54ddd5a828fa4d01bf9546fe1d854603${
         !recipeSearch ? "" : recipeSearch
-      }&type=main-course&number=3&offset=${offset}`
+      }&type=main-course&number=3&offset=${Math.floor(Math.random() * 10)}`
     );
     const data = await api.json();
     console.log(data, recipeSearch);
