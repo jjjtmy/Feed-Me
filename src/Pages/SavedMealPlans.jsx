@@ -66,7 +66,7 @@ export default function SavedMealPlans() {
 
   //render each saved search card
   return (
-    <div>
+    <div style={{ display: "flex", flexWrap: "wrap" }}>
       {mySavedMealPlans.map((eachSave) => {
         return (
           <SavedMealPlanItem

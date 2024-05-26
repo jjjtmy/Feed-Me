@@ -66,28 +66,28 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "space-around" }}>
       <SearchForm performSearch={performSearch} getDay={getDay} />
-      {/* <img
-        src="https://cherwell.org/wp-content/uploads/2024/04/ramadan.webp"
-        alt=""
-      /> */}
-      {/* render onyl when feed me is clicked */}
-      {!recipeSearch ? (
-        ""
-      ) : (
-        <ResultList
-          resultListBreakfast={resultListBreakfast}
-          resultListLunch={resultListLunch}
-          resultListDinner={resultListDinner}
-          handleRefreshBreakfast={handleRefreshBreakfast}
-          handleRefreshLunch={handleRefreshLunch}
-          handleRefreshDinner={handleRefreshDinner}
-          chosenDay={chosenDay}
-          // performSearch={performSearch}
-        />
-      )}
+      <div>
+        {!recipeSearch ? (
+          <img
+            src="https://cherwell.org/wp-content/uploads/2024/04/ramadan.webp"
+            alt=""
+          />
+        ) : (
+          <ResultList
+            resultListBreakfast={resultListBreakfast}
+            resultListLunch={resultListLunch}
+            resultListDinner={resultListDinner}
+            handleRefreshBreakfast={handleRefreshBreakfast}
+            handleRefreshLunch={handleRefreshLunch}
+            handleRefreshDinner={handleRefreshDinner}
+            chosenDay={chosenDay}
+            // performSearch={performSearch}
+          />
+        )}
+      </div>
       {/* <Footer></Footer> */}
-    </>
+    </div>
   );
 }

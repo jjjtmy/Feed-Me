@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { IconButton } from "@chakra-ui/react";
+import { RepeatIcon } from "@chakra-ui/icons";
 
 import ResultListItem from "./ResultListItem";
 
@@ -50,47 +52,90 @@ export default function ResultList({
   return (
     <div>
       <ul>
-        <h2>BREAKFAST</h2>
-        <button onClick={handleRefreshBreakfast}>
-          Get more breakfast options
-        </button>
-        {resultListBreakfast.map((recipe) => {
-          return (
-            <ResultListItem
-              key={recipe.id}
-              eachResult={recipe}
-              selectMeal={() => selectMeal("BreakfastID", recipe.id)}
-            />
-          );
-        })}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            padding: "10px 0 5px 0",
+          }}
+        >
+          <h2>BREAKFAST</h2>
+          <IconButton
+            onClick={handleRefreshBreakfast}
+            aria-label="Get more breakfast options"
+            size="xs"
+            icon={<RepeatIcon boxSize={4} />}
+          />
+        </div>
+        <div style={{ display: "flex" }}>
+          {resultListBreakfast.map((recipe) => {
+            return (
+              <ResultListItem
+                key={recipe.id}
+                eachResult={recipe}
+                selectMeal={() => selectMeal("BreakfastID", recipe.id)}
+              />
+            );
+          })}
+        </div>
       </ul>
 
       <ul>
-        <h2>LUNCH</h2>
-        <button onClick={handleRefreshLunch}>Get more lunch options</button>
-        {resultListLunch.map((recipe) => {
-          return (
-            <ResultListItem
-              key={recipe.id}
-              eachResult={recipe}
-              selectMeal={() => selectMeal("LunchID", recipe.id)}
-            />
-          );
-        })}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            padding: "10px 0 5px 0",
+          }}
+        >
+          <h2>LUNCH</h2>
+          <IconButton
+            onClick={handleRefreshLunch}
+            aria-label="Get more lunch options"
+            size="xs"
+            icon={<RepeatIcon boxSize={4} />}
+          />
+        </div>
+        <div style={{ display: "flex" }}>
+          {resultListLunch.map((recipe) => {
+            return (
+              <ResultListItem
+                key={recipe.id}
+                eachResult={recipe}
+                selectMeal={() => selectMeal("LunchID", recipe.id)}
+              />
+            );
+          })}
+        </div>
       </ul>
 
       <ul>
-        <h2>DINNER</h2>
-        <button onClick={handleRefreshDinner}>Get more dinner options</button>
-        {resultListDinner.map((recipe) => {
-          return (
-            <ResultListItem
-              key={recipe.id}
-              eachResult={recipe}
-              selectMeal={() => selectMeal("DinnerID", recipe.id)}
-            />
-          );
-        })}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            padding: "10px 0 5px 0",
+          }}
+        >
+          <h2>DINNER</h2>
+          <IconButton
+            onClick={handleRefreshDinner}
+            aria-label="Get more dinner options"
+            size="xs"
+            icon={<RepeatIcon boxSize={4} />}
+          />
+        </div>
+        <div style={{ display: "flex" }}>
+          {resultListDinner.map((recipe) => {
+            return (
+              <ResultListItem
+                key={recipe.id}
+                eachResult={recipe}
+                selectMeal={() => selectMeal("DinnerID", recipe.id)}
+              />
+            );
+          })}
+        </div>
       </ul>
       {console.log(mealPlan)}
       <button onClick={createMealPlan}>Save Meal Plan</button>

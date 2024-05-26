@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./ResultListItem.css";
 
 export default function ResultListItem({ eachResult, selectMeal }) {
   const [recipe, setRecipe] = useState(null);
@@ -18,6 +19,23 @@ export default function ResultListItem({ eachResult, selectMeal }) {
 
   //   getRecipeInfo(eachResult.id);
   // }, [eachResult]);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  // Define styles for hover state
+  const hoverStyles = {
+    outline: "1px solid black",
+    fontWeight: "bold",
+  };
+
+  // Define styles for click state
+  const clickStyles = {
+    outline: "3px solid black",
+    fontWeight: "bold",
+  };
+
+  const hoverEffect = isHovered ? hoverStyles : {};
+  const clickEffect = isClicked ? clickStyles : {};
 
   const handleItemClick = async () => {
     try {
@@ -27,24 +45,29 @@ export default function ResultListItem({ eachResult, selectMeal }) {
       const data = await response.json();
       setRecipe(data);
       selectMeal(); // Call the selectMeal function if needed
+      setIsClicked(!isClicked);
     } catch (error) {
       console.error("Error fetching recipe info:", error);
     }
   };
 
   return (
-    <li>
-      <div onClick={handleItemClick}>Pick Me!</div>
-      <img
-        src={recipe ? recipe.image : eachResult.image}
-        alt={eachResult.title}
-      />
-      <p>{recipe ? recipe.title : eachResult.title}</p>
-      {recipe && (
-        <a href={recipe.sourceUrl} target="_blank">
-          See recipe
-        </a>
-      )}
+    <li
+      style={{ ...hoverEffect, ...clickEffect, listStyleType: "none" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div onClick={handleItemClick}>
+        <img
+          src={recipe ? recipe.image : eachResult.image}
+          alt={eachResult.title}
+          style={{ width: "100vh", height: "100px" }}
+        />
+        <p style={{ fontSize: "13px", lineHeight: "12px" }}>
+          {recipe ? recipe.title : eachResult.title}
+        </p>
+        {recipe && <a href={recipe.sourceUrl} target="_blank"></a>}
+      </div>
     </li>
   );
 }
