@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./ResultListItem.css";
 
 export default function ResultListItem({ eachResult, selectMeal }) {
   const [recipe, setRecipe] = useState(null);
@@ -61,9 +60,9 @@ export default function ResultListItem({ eachResult, selectMeal }) {
         <img
           src={recipe ? recipe.image : eachResult.image}
           alt={eachResult.title}
-          style={{ width: "100vh", height: "100px" }}
+          style={{ width: "100vh", height: "20%" }}
         />
-        <p style={{ fontSize: "13px", lineHeight: "12px" }}>
+        <p style={{ margin: "10px 2px", fontSize: "15px", lineHeight: "12px" }}>
           {recipe ? recipe.title : eachResult.title}
         </p>
         {recipe && <a href={recipe.sourceUrl} target="_blank"></a>}

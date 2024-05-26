@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Route, Link } from "react-router-dom";
+import "react-day-picker/dist/style.css";
 
 import Home from "./Pages/Home";
 import SavedMealPlans from "./Pages/SavedMealPlans";
@@ -8,11 +9,34 @@ import SavedMealPlans from "./Pages/SavedMealPlans";
 function App() {
   return (
     <div>
-      <nav>
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          margin: "-20px 0 20px -10px",
+        }}
+      >
         <Link to="/">
-          <h1>FEED ME</h1>
+          <h1
+            style={{
+              fontWeight: "bold",
+              fontSize: "80px",
+            }}
+          >
+            FEED ME
+          </h1>
         </Link>
-        <Link to="/savedMealPlans">My Saved Meal Plans</Link>
+        <Link to="/savedMealPlans">
+          <p
+            style={{
+              fontWeight: "bold",
+              fontSize: "20px",
+            }}
+          >
+            My Saved Meal Plans
+          </p>
+        </Link>
       </nav>
       <main>
         <Route exact path="/" component={Home} />

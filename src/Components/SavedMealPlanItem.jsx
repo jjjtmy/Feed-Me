@@ -49,7 +49,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
   return (
     <Card
       variant="filled"
-      maxW="33%"
+      maxW="30%"
       justify-content="center"
       bg="lightyellow"
       margin="10px"

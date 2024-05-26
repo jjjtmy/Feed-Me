@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconButton } from "@chakra-ui/react";
+import { IconButton, Button, ButtonGroup } from "@chakra-ui/react";
 import { RepeatIcon } from "@chakra-ui/icons";
 
 import ResultListItem from "./ResultListItem";
@@ -138,7 +138,14 @@ export default function ResultList({
         </div>
       </ul>
       {console.log(mealPlan)}
-      <button onClick={createMealPlan}>Save Meal Plan</button>
+      <Button
+        onClick={createMealPlan}
+        colorScheme="teal"
+        variant="solid"
+        margin="10px"
+      >
+        Save Meal Plan
+      </Button>
     </div>
   );
 }
