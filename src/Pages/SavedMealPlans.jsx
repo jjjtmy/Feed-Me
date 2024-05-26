@@ -66,16 +66,22 @@ export default function SavedMealPlans() {
 
   //render each saved search card
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {mySavedMealPlans.map((eachSave) => {
-        return (
-          <SavedMealPlanItem
-            key={eachSave.id}
-            eachSave={eachSave}
-            deleteMealPlan={deleteMealPlan}
-          />
-        );
-      })}
-    </div>
+    <>
+      <p style={{ padding: "30px", textAlign: "left", fontStyle: "italic" }}>
+        Here are your saved meal plans. Click on the images to link to the
+        recipes!
+      </p>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {mySavedMealPlans.map((eachSave) => {
+          return (
+            <SavedMealPlanItem
+              key={eachSave.id}
+              eachSave={eachSave}
+              deleteMealPlan={deleteMealPlan}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }

@@ -23,13 +23,13 @@ export default function ResultListItem({ eachResult, selectMeal }) {
 
   // Define styles for hover state
   const hoverStyles = {
-    outline: "1px solid black",
+    outline: "2px dotted teal",
     fontWeight: "bold",
   };
 
   // Define styles for click state
   const clickStyles = {
-    outline: "3px solid black",
+    outline: "3px solid teal",
     fontWeight: "bold",
   };
 
@@ -52,7 +52,12 @@ export default function ResultListItem({ eachResult, selectMeal }) {
 
   return (
     <li
-      style={{ ...hoverEffect, ...clickEffect, listStyleType: "none" }}
+      style={{
+        ...hoverEffect,
+        ...clickEffect,
+        listStyleType: "none",
+        margin: "2px",
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

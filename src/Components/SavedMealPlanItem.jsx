@@ -51,7 +51,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       variant="filled"
       maxW="30%"
       justify-content="center"
-      bg="lightyellow"
+      bg="lighteal"
       margin="10px"
     >
       <CardHeader>
@@ -61,7 +61,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       </CardHeader>
       <CardBody>
         <p>
-          <Text color="blue.600" fontSize="l" fontWeight="bold">
+          <Text color="teal" fontSize="l" fontWeight="bold">
             Breakfast
           </Text>
           {breakfastInfo ? (
@@ -84,12 +84,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           )}
         </p>
         <p>
-          <Text
-            color="blue.600"
-            fontSize="l"
-            fontWeight="bold"
-            margin="5px 0 0 0"
-          >
+          <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
             Lunch
           </Text>
           {lunchInfo ? (
@@ -97,7 +92,11 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
               <img
                 src={lunchInfo.image}
                 alt={lunchInfo.title}
-                style={{ maxWidth: "100%", maxHeight: "100%", margin: "auto" }}
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  margin: "auto",
+                }}
               />
               <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
                 {lunchInfo.title}
@@ -109,12 +108,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
         </p>
 
         <p>
-          <Text
-            color="blue.600"
-            fontSize="l"
-            fontWeight="bold"
-            margin="5px 0 0 0"
-          >
+          <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
             Dinner
           </Text>
           {dinnerInfo ? (
@@ -122,7 +116,11 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
               <img
                 src={dinnerInfo.image}
                 alt={dinnerInfo.title}
-                style={{ maxWidth: "100%", maxHeight: "100%", margin: "auto" }}
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  margin: "auto",
+                }}
               />
               <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
                 {dinnerInfo.title}
@@ -143,7 +141,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       >
         <Button
           variant="solid"
-          colorScheme="blue"
+          colorScheme="teal"
           style={{ height: "90%", width: "80%", margin: "5px" }}
           onClick={handleEditMealPlan}
         >
@@ -151,7 +149,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
         </Button>
         <Button
           variant="solid"
-          colorScheme="blue"
+          colorScheme="teal"
           style={{ height: "90%" }}
           onClick={() => deleteMealPlan(eachSave.id)}
         >

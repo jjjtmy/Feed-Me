@@ -17,16 +17,27 @@ function App() {
           margin: "-20px 0 20px -10px",
         }}
       >
-        <Link to="/">
-          <h1
-            style={{
-              fontWeight: "bold",
-              fontSize: "80px",
-            }}
-          >
-            FEED ME
-          </h1>
-        </Link>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            lineHeight: "50px",
+            padding: "20px 0 0 10px",
+          }}
+        >
+          <Link to="/">
+            <h1
+              style={{
+                fontWeight: "bold",
+                fontSize: "80px",
+              }}
+            >
+              FEED ME
+            </h1>
+          </Link>
+          <p style={{ color: "grey" }}> Your one stop meal planner</p>
+        </div>
         <Link to="/savedMealPlans">
           <p
             style={{
