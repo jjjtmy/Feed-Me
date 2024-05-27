@@ -1,11 +1,6 @@
 import SavedMealPlanItem from "../Components/SavedMealPlanItem";
 import { useState, useEffect } from "react";
 
-// SavedMeal Plans
-// > render saved meal plans by day - map from airtable 0.5
-// > Delete meal plan by day
-// > when click edit —> link back to search page with pre-filled form for day 0.5
-
 export default function SavedMealPlans() {
   const [mySavedMealPlans, setMySavedMealPlans] = useState([]);
 

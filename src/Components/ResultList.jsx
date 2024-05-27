@@ -42,20 +42,66 @@ export default function ResultList({
     console.log(mealPlan);
   };
 
-  async function createMealPlan() {
-    const response = await fetch(`${BASE_URL}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify({
-        fields: mealPlan,
-      }),
-    });
+  // async function createMealPlan() {
+  //   const response = await fetch(`${BASE_URL}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${TOKEN}`,
+  //     },
+  //     body: JSON.stringify({
+  //       fields: mealPlan,
+  //     }),
+  //   });
+  //   const jsonData = await response.json();
+  //   alert("Successfully saved your meal plan");
+  // }
+
+  const checkIfMealPlanExists = async (date) => {
+    const response = await fetch(
+      `${BASE_URL}?filterByFormula={Day}='${date}'`,
+      {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      }
+    );
     const jsonData = await response.json();
-    alert("Successfully saved your meal plan");
-  }
+    return jsonData.records.length > 0 ? jsonData.records[0] : null;
+  };
+
+  const createMealPlan = async () => {
+    const existingMealPlan = await checkIfMealPlanExists(mealPlan.Day);
+    if (existingMealPlan) {
+      // Update existing meal plan
+      const response = await fetch(`${BASE_URL}/${existingMealPlan.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify({
+          fields: mealPlan,
+        }),
+      });
+      const jsonData = await response.json();
+      alert("Successfully updated your meal plan");
+    } else {
+      // Create new meal plan
+      const response = await fetch(`${BASE_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify({
+          fields: mealPlan,
+        }),
+      });
+      const jsonData = await response.json();
+      alert("Successfully saved your meal plan");
+    }
+  };
 
   return (
     <div>
