@@ -37,6 +37,7 @@ export default function ResultListItem({ eachResult, selectMeal, isSelected }) {
         ...clickEffect,
         listStyleType: "none",
         margin: "2px",
+        maxWidth: "200px",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

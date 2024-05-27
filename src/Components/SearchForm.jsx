@@ -30,6 +30,9 @@ export default function SearchForm({ performSearch, getDay }) {
       style={{
         backgroundColor: "lightgrey",
         width: "40%",
+        minWidth: "300px",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
       <form onSubmit={handleSubmit}>
@@ -39,8 +42,8 @@ export default function SearchForm({ performSearch, getDay }) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            width: "80%",
             margin: "0 auto",
+            width: "80%",
           }}
         >
           {" "}
