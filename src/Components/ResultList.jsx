@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { IconButton, Button, ButtonGroup } from "@chakra-ui/react";
+import { IconButton, Button } from "@chakra-ui/react";
 import { RepeatIcon } from "@chakra-ui/icons";
-
 import ResultListItem from "./ResultListItem";
 
 const TOKEN = import.meta.env.VITE_API_KEY;
@@ -17,12 +16,17 @@ export default function ResultList({
   handleRefreshDinner,
   chosenDay,
 }) {
-  //create object to store selectedmeals for a meal plan
   const [mealPlan, setMealPlan] = useState({
     Day: "",
     BreakfastID: "",
     LunchID: "",
     DinnerID: "",
+  });
+
+  const [selectedMeal, setSelectedMeal] = useState({
+    BreakfastID: null,
+    LunchID: null,
+    DinnerID: null,
   });
 
   const selectMeal = (mealType, id) => {
@@ -31,9 +35,13 @@ export default function ResultList({
       Day: chosenDay,
       [mealType]: id,
     }));
+    setSelectedMeal((prevSelectedMeal) => ({
+      ...prevSelectedMeal,
+      [mealType]: id,
+    }));
+    console.log(mealPlan);
   };
 
-  //Update saved meal plan
   async function createMealPlan() {
     const response = await fetch(`${BASE_URL}`, {
       method: "POST",
@@ -68,15 +76,14 @@ export default function ResultList({
           />
         </div>
         <div style={{ display: "flex" }}>
-          {resultListBreakfast.map((recipe) => {
-            return (
-              <ResultListItem
-                key={recipe.id}
-                eachResult={recipe}
-                selectMeal={() => selectMeal("BreakfastID", recipe.id)}
-              />
-            );
-          })}
+          {resultListBreakfast.map((recipe) => (
+            <ResultListItem
+              key={recipe.id}
+              eachResult={recipe}
+              selectMeal={() => selectMeal("BreakfastID", recipe.id)}
+              isSelected={selectedMeal.BreakfastID === recipe.id}
+            />
+          ))}
         </div>
       </ul>
 
@@ -97,15 +104,14 @@ export default function ResultList({
           />
         </div>
         <div style={{ display: "flex" }}>
-          {resultListLunch.map((recipe) => {
-            return (
-              <ResultListItem
-                key={recipe.id}
-                eachResult={recipe}
-                selectMeal={() => selectMeal("LunchID", recipe.id)}
-              />
-            );
-          })}
+          {resultListLunch.map((recipe) => (
+            <ResultListItem
+              key={recipe.id}
+              eachResult={recipe}
+              selectMeal={() => selectMeal("LunchID", recipe.id)}
+              isSelected={selectedMeal.LunchID === recipe.id}
+            />
+          ))}
         </div>
       </ul>
 
@@ -126,18 +132,17 @@ export default function ResultList({
           />
         </div>
         <div style={{ display: "flex" }}>
-          {resultListDinner.map((recipe) => {
-            return (
-              <ResultListItem
-                key={recipe.id}
-                eachResult={recipe}
-                selectMeal={() => selectMeal("DinnerID", recipe.id)}
-              />
-            );
-          })}
+          {resultListDinner.map((recipe) => (
+            <ResultListItem
+              key={recipe.id}
+              eachResult={recipe}
+              selectMeal={() => selectMeal("DinnerID", recipe.id)}
+              isSelected={selectedMeal.DinnerID === recipe.id}
+            />
+          ))}
         </div>
       </ul>
-      {console.log(mealPlan)}
+
       <Button
         onClick={createMealPlan}
         colorScheme="teal"

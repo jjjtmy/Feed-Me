@@ -30,6 +30,7 @@ export default function Home() {
       }&type=breakfast&number=3&offset=${Math.floor(Math.random() * 10)}`
     );
     const data = await api.json();
+    console.log(data);
     setResultListBreakfast(data.results);
   };
 
