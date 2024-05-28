@@ -19,8 +19,14 @@ export default function ResultList({
   const [mealPlan, setMealPlan] = useState({
     Day: "",
     BreakfastID: "",
+    BreakfastTitle: "",
+    BreakfastImage: "",
     LunchID: "",
+    LunchTitle: "",
+    LunchImage: "",
     DinnerID: "",
+    DinnerTitle: "",
+    DinnerImage: "",
   });
 
   const [selectedMeal, setSelectedMeal] = useState({
@@ -29,20 +35,19 @@ export default function ResultList({
     DinnerID: null,
   });
 
-  const selectMeal = (mealType, id) => {
+  const selectMeal = (mealType, id, title, image) => {
     setMealPlan((prevMealPlan) => ({
       ...prevMealPlan,
       Day: chosenDay,
-      [mealType]: id,
+      [`${mealType}ID`]: id,
+      [`${mealType}Title`]: title,
+      [`${mealType}Image`]: image,
     }));
     setSelectedMeal((prevSelectedMeal) => ({
       ...prevSelectedMeal,
-      [mealType]: id,
+      [`${mealType}ID`]: id,
     }));
-    console.log(mealPlan);
   };
-
-  // }
 
   const checkIfMealPlanExists = async (date) => {
     const response = await fetch(
@@ -114,7 +119,9 @@ export default function ResultList({
             <ResultListItem
               key={recipe.id}
               eachResult={recipe}
-              selectMeal={() => selectMeal("BreakfastID", recipe.id)}
+              selectMeal={() =>
+                selectMeal("Breakfast", recipe.id, recipe.title, recipe.image)
+              }
               isSelected={selectedMeal.BreakfastID === recipe.id}
             />
           ))}
@@ -142,7 +149,9 @@ export default function ResultList({
             <ResultListItem
               key={recipe.id}
               eachResult={recipe}
-              selectMeal={() => selectMeal("LunchID", recipe.id)}
+              selectMeal={() =>
+                selectMeal("Lunch", recipe.id, recipe.title, recipe.image)
+              }
               isSelected={selectedMeal.LunchID === recipe.id}
             />
           ))}
@@ -170,7 +179,9 @@ export default function ResultList({
             <ResultListItem
               key={recipe.id}
               eachResult={recipe}
-              selectMeal={() => selectMeal("DinnerID", recipe.id)}
+              selectMeal={() =>
+                selectMeal("Dinner", recipe.id, recipe.title, recipe.image)
+              }
               isSelected={selectedMeal.DinnerID === recipe.id}
             />
           ))}

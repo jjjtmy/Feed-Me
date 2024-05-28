@@ -23,6 +23,7 @@ export default function SavedMealPlans() {
       ...data.fields,
       id: data.id,
     }));
+    console.log(mealPlanData);
     setMySavedMealPlans(mealPlanData);
   }
 

@@ -13,35 +13,34 @@ import {
 const cache = {};
 
 export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
-  const [breakfastInfo, setBreakfastInfo] = useState(null);
-  const [lunchInfo, setLunchInfo] = useState(null);
-  const [dinnerInfo, setDinnerInfo] = useState(null);
+  // const [breakfastInfo, setBreakfastInfo] = useState(null);
+  // const [lunchInfo, setLunchInfo] = useState(null);
+  // const [dinnerInfo, setDinnerInfo] = useState(null);
+
+  // const getRecipeInfo = async (id, setInfo) => {
+  //   if (cache[id]) {
+  //     setInfo(cache[id]);
+  //     return;
+  //   }
+  //   try {
+  //     const response = await fetch(
+  //       `https://api.spoonacular.com/recipes/informationBulk?ids=${id},${id}/?apiKey=54ddd5a828fa4d01bf9546fe1d854603`
+  //     );
+  //     const data = await response.json();
+  //     cache[id] = data;
+  //     setInfo(data);
+  //   } catch (error) {
+  //     console.error("Error fetching recipe info:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getRecipeInfo(eachSave.BreakfastID, setBreakfastInfo);
+  //   getRecipeInfo(eachSave.LunchID, setLunchInfo);
+  //   getRecipeInfo(eachSave.DinnerID, setDinnerInfo);
+  // }, [eachSave]);
 
   const history = useHistory();
-
-  const getRecipeInfo = async (id, setInfo) => {
-    if (cache[id]) {
-      setInfo(cache[id]);
-      return;
-    }
-    try {
-      const response = await fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=54ddd5a828fa4d01bf9546fe1d854603`
-      );
-      const data = await response.json();
-      cache[id] = data;
-      setInfo(data);
-    } catch (error) {
-      console.error("Error fetching recipe info:", error);
-    }
-  };
-
-  useEffect(() => {
-    getRecipeInfo(eachSave.BreakfastID, setBreakfastInfo);
-    getRecipeInfo(eachSave.LunchID, setLunchInfo);
-    getRecipeInfo(eachSave.DinnerID, setDinnerInfo);
-  }, [eachSave]);
-
   const handleEditMealPlan = () => {
     history.push("/");
   };
@@ -61,6 +60,64 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
       </CardHeader>
       <CardBody>
         <p>
+          <Text color="teal" fontSize="l" fontWeight="bold">
+            Breakfast
+          </Text>
+          {/* <a href={breakfastInfo.sourceUrl} target="_blank"> */}
+          <img
+            src={eachSave.BreakfastImage}
+            alt={eachSave.BreakfastTitle}
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              margin: "auto",
+            }}
+          />
+          <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
+            {eachSave.BreakfastTitle}
+          </Text>
+        </p>
+        <p>
+          <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
+            Lunch
+          </Text>
+          {/* {lunchInfo ? (
+            <a href={lunchInfo.sourceUrl} target="_blank"> */}
+          <img
+            src={eachSave.LunchImage}
+            alt={eachSave.LunchTitle}
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              margin: "auto",
+            }}
+          />
+          <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
+            {eachSave.LunchTitle}
+          </Text>
+        </p>
+
+        <p>
+          <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
+            Dinner
+          </Text>
+          {/* {dinnerInfo ? (
+            <a href={dinnerInfo.sourceUrl} target="_blank"> */}
+          <img
+            src={eachSave.DinnerImage}
+            alt={eachSave.DinnerTitle}
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              margin: "auto",
+            }}
+          />
+          <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
+            {eachSave.DinnerTitle}
+          </Text>
+        </p>
+
+        {/* <p>
           <Text color="teal" fontSize="l" fontWeight="bold">
             Breakfast
           </Text>
@@ -129,7 +186,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           ) : (
             "Loading..."
           )}{" "}
-        </p>
+        </p> */}
       </CardBody>
       <CardFooter
         style={{
