@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Card,
@@ -13,32 +12,23 @@ import {
 const cache = {};
 
 export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
-  // const [breakfastInfo, setBreakfastInfo] = useState(null);
-  // const [lunchInfo, setLunchInfo] = useState(null);
-  // const [dinnerInfo, setDinnerInfo] = useState(null);
-
-  // const getRecipeInfo = async (id, setInfo) => {
-  //   if (cache[id]) {
-  //     setInfo(cache[id]);
-  //     return;
-  //   }
-  //   try {
-  //     const response = await fetch(
-  //       `https://api.spoonacular.com/recipes/informationBulk?ids=${id},${id}/?apiKey=54ddd5a828fa4d01bf9546fe1d854603`
-  //     );
-  //     const data = await response.json();
-  //     cache[id] = data;
-  //     setInfo(data);
-  //   } catch (error) {
-  //     console.error("Error fetching recipe info:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getRecipeInfo(eachSave.BreakfastID, setBreakfastInfo);
-  //   getRecipeInfo(eachSave.LunchID, setLunchInfo);
-  //   getRecipeInfo(eachSave.DinnerID, setDinnerInfo);
-  // }, [eachSave]);
+  const getRecipeLink = async (id) => {
+    if (cache[id]) {
+      window.open(cache[id], "_blank");
+      return;
+    }
+    try {
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=54ddd5a828fa4d01bf9546fe1d854603`
+      );
+      const data = await response.json();
+      const recipeUrl = data[0].sourceUrl;
+      cache[id] = recipeUrl;
+      window.open(recipeUrl, "_blank");
+    } catch (error) {
+      console.error("Error fetching recipe info:", error);
+    }
+  };
 
   const history = useHistory();
   const handleEditMealPlan = () => {
@@ -59,7 +49,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
         </Heading>
       </CardHeader>
       <CardBody>
-        <p>
+        <div onClick={() => getRecipeLink(eachSave.BreakfastID)}>
           <Text color="teal" fontSize="l" fontWeight="bold">
             Breakfast
           </Text>
@@ -76,8 +66,9 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
             {eachSave.BreakfastTitle}
           </Text>
-        </p>
-        <p>
+        </div>
+
+        <div onClick={() => getRecipeLink(eachSave.LunchID)}>
           <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
             Lunch
           </Text>
@@ -95,14 +86,12 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
             {eachSave.LunchTitle}
           </Text>
-        </p>
+        </div>
 
-        <p>
+        <div onClick={() => getRecipeLink(eachSave.DinnerID)}>
           <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
             Dinner
           </Text>
-          {/* {dinnerInfo ? (
-            <a href={dinnerInfo.sourceUrl} target="_blank"> */}
           <img
             src={eachSave.DinnerImage}
             alt={eachSave.DinnerTitle}
@@ -115,78 +104,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
             {eachSave.DinnerTitle}
           </Text>
-        </p>
-
-        {/* <p>
-          <Text color="teal" fontSize="l" fontWeight="bold">
-            Breakfast
-          </Text>
-          {breakfastInfo ? (
-            <a href={breakfastInfo.sourceUrl} target="_blank">
-              <img
-                src={breakfastInfo.image}
-                alt={breakfastInfo.title}
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  margin: "auto",
-                }}
-              />
-              <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
-                {breakfastInfo.title}
-              </Text>
-            </a>
-          ) : (
-            "Loading..."
-          )}
-        </p>
-        <p>
-          <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
-            Lunch
-          </Text>
-          {lunchInfo ? (
-            <a href={lunchInfo.sourceUrl} target="_blank">
-              <img
-                src={lunchInfo.image}
-                alt={lunchInfo.title}
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  margin: "auto",
-                }}
-              />
-              <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
-                {lunchInfo.title}
-              </Text>
-            </a>
-          ) : (
-            "Loading..."
-          )}
-        </p>
-
-        <p>
-          <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
-            Dinner
-          </Text>
-          {dinnerInfo ? (
-            <a href={dinnerInfo.sourceUrl} target="_blank">
-              <img
-                src={dinnerInfo.image}
-                alt={dinnerInfo.title}
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  margin: "auto",
-                }}
-              />
-              <Text color="black" fontSize="s" style={{ lineHeight: "18px" }}>
-                {dinnerInfo.title}
-              </Text>
-            </a>
-          ) : (
-            "Loading..."
-          )}{" "}
-        </p> */}
+        </div>
       </CardBody>
       <CardFooter
         style={{

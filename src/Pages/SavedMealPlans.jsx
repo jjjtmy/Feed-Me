@@ -1,5 +1,7 @@
 import SavedMealPlanItem from "../Components/SavedMealPlanItem";
 import { useState, useEffect } from "react";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
 
 export default function SavedMealPlans() {
   const [mySavedMealPlans, setMySavedMealPlans] = useState([]);
@@ -60,6 +62,8 @@ export default function SavedMealPlans() {
     }
   }
 
+  // const [selected, setSelected] = useState(new Date(2024, 5, 20));
+
   //render each saved search card
   return (
     <>
@@ -67,6 +71,8 @@ export default function SavedMealPlans() {
         Here are your saved meal plans. Click on the images to link to the
         recipes!
       </p>
+      {/* <DayPicker mode="single" selected={selected} onSelect={setSelected} /> */}
+
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {mySavedMealPlans.map((eachSave) => {
           return (

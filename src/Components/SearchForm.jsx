@@ -36,7 +36,12 @@ export default function SearchForm({ performSearch, getDay }) {
       }}
     >
       <form onSubmit={handleSubmit}>
-        <DayPicker mode="single" selected={day} onSelect={setDay} />
+        <DayPicker
+          mode="single"
+          selected={day}
+          onSelect={setDay}
+          style={{ width: "100%" }}
+        />
         <div
           style={{
             display: "flex",
