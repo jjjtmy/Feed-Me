@@ -11,6 +11,7 @@ So that: I can maintain a balanced diet that aligns with my health goals
 
 ## Getting Started
 * Step 1: Select a date that you would like to create a meal plan for
+  ![Landing Page](Landing Page.png)
 * Step 2: Select the range of each macronutrient you would like to have for each meal
 * Step 3: Click "Feed Me!"
 * Step 4: For each meal, click on a meal option that you would like to add to your meal plan. You may click on the refresh button to show more options for each meal.
