@@ -11,11 +11,20 @@ So that: I can maintain a balanced diet that aligns with my health goals
 
 ## Getting Started
 * Step 1: Select a date that you would like to create a meal plan for
+![Landing Page](https://github.com/jjjtmy/feed-me-project-2/assets/155456605/c121b80d-b2ba-416d-b94d-335f39c2a5f7)
 * Step 2: Select the range of each macronutrient you would like to have for each meal
 * Step 3: Click "Feed Me!"
 * Step 4: For each meal, click on a meal option that you would like to add to your meal plan. You may click on the refresh button to show more options for each meal.
+![Result List](https://github.com/jjjtmy/feed-me-project-2/assets/155456605/8b9f5e01-96e5-4f04-8838-a6f175e6aa76)
+You may need to expand your search criteria to show results for your search.
+![Expand Search Criteria](https://github.com/jjjtmy/feed-me-project-2/assets/155456605/e17e1ac6-6143-4fb6-a192-c080b70f067f)
 * Step 5: Click "Save Meal Plan" (Remember to select an option for each meal!)
-* Step 6: Go to "My Saved Meal Plans" to view the meal plans that you have saved. You may edit and delete each meal plan by clicking on the corresponding buttons.
+![Meal Plan Saved](https://github.com/jjjtmy/feed-me-project-2/assets/155456605/bf399907-05e3-4a8b-88cd-a73c25db48e7)
+* Step 6: Go to "My Saved Meal Plans" to view the meal plans that you have saved. 
+![My Saved Meal Plans](https://github.com/jjjtmy/feed-me-project-2/assets/155456605/595e45a6-8c3b-422c-954f-9000d86ec07a)
+You may edit and delete each meal plan by clicking on the corresponding buttons.
+![Edit and Delete Buttons](https://github.com/jjjtmy/feed-me-project-2/assets/155456605/7d683d77-ff05-471a-b8fc-491f03ebc4ea)
+
 
 ## Technologies Used
 * Frontend framework
