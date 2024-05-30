@@ -72,6 +72,7 @@ export default function Home() {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "space-evenly",
+        height: "70vh",
       }}
     >
       <SearchForm performSearch={performSearch} getDay={getDay} />
