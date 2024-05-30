@@ -67,9 +67,15 @@ export default function Home() {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "flex-start",
+        justifyContent: "space-evenly",
+      }}
+    >
       <SearchForm performSearch={performSearch} getDay={getDay} />
-      <div style={{ margin: "0 10px" }}>
+      <div style={{}}>
         {!recipeSearch ? (
           <img
             src="https://cherwell.org/wp-content/uploads/2024/04/ramadan.webp"
