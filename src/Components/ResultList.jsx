@@ -74,6 +74,7 @@ export default function ResultList({
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const createMealPlan = async () => {
     const existingMealPlan = await checkIfMealPlanExists(mealPlan.Day);
@@ -214,7 +215,11 @@ export default function ResultList({
 
       <Button
         onClick={() => {
-          createMealPlan();
+          if (!mealPlan.BreakfastID || !mealPlan.LunchID || !mealPlan.DinnerID)
+            setIsAlertOpen(true);
+          else {
+            createMealPlan();
+          }
         }}
         colorScheme="teal"
         variant="solid"
@@ -222,6 +227,24 @@ export default function ResultList({
       >
         Save Meal Plan
       </Button>
+
+      <Modal isOpen={isAlertOpen} onClose={() => setIsAlertOpen(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Missing Selections</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>Please select all meals</ModalBody>
+          <ModalFooter>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={() => setIsAlertOpen(false)}
+            >
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
