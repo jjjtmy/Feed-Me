@@ -1,5 +1,6 @@
 import SearchForm from "../Components/SearchForm";
 import ResultList from "../Components/ResultList";
+import Footer from "../Components/Footer";
 
 import { useState, useEffect } from "react";
 
@@ -87,11 +88,10 @@ export default function Home() {
             handleRefreshLunch={handleRefreshLunch}
             handleRefreshDinner={handleRefreshDinner}
             chosenDay={chosenDay}
-            // performSearch={performSearch}
           />
         )}
       </div>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </div>
   );
 }
