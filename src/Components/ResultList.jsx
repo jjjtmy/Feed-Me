@@ -1,5 +1,16 @@
 import { useState } from "react";
-import { IconButton, Button } from "@chakra-ui/react";
+import {
+  IconButton,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { RepeatIcon } from "@chakra-ui/icons";
 import ResultListItem from "./ResultListItem";
 
@@ -62,6 +73,8 @@ export default function ResultList({
     return jsonData.records.length > 0 ? jsonData.records[0] : null;
   };
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const createMealPlan = async () => {
     const existingMealPlan = await checkIfMealPlanExists(mealPlan.Day);
     if (existingMealPlan) {
@@ -76,8 +89,8 @@ export default function ResultList({
           fields: mealPlan,
         }),
       });
-      const jsonData = await response.json();
-      alert("Successfully updated your meal plan");
+      await response.json();
+      onOpen();
     } else {
       // Create new meal plan
       const response = await fetch(`${BASE_URL}`, {
@@ -90,8 +103,8 @@ export default function ResultList({
           fields: mealPlan,
         }),
       });
-      const jsonData = await response.json();
-      alert("Successfully saved your meal plan");
+      await response.json();
+      onOpen();
     }
   };
 
@@ -189,13 +202,29 @@ export default function ResultList({
       </ul>
 
       <Button
-        onClick={createMealPlan}
+        onClick={() => {
+          createMealPlan();
+        }}
         colorScheme="teal"
         variant="solid"
         margin="10px"
       >
         Save Meal Plan
       </Button>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Meal Plan Saved</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>Successfully saved your meal plan</ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }

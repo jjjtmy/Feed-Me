@@ -53,7 +53,6 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           <Text color="teal" fontSize="l" fontWeight="bold">
             Breakfast
           </Text>
-          {/* <a href={breakfastInfo.sourceUrl} target="_blank"> */}
           <img
             src={eachSave.BreakfastImage}
             alt={eachSave.BreakfastTitle}
@@ -72,8 +71,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
           <Text color="teal" fontSize="l" fontWeight="bold" margin="5px 0 0 0">
             Lunch
           </Text>
-          {/* {lunchInfo ? (
-            <a href={lunchInfo.sourceUrl} target="_blank"> */}
+
           <img
             src={eachSave.LunchImage}
             alt={eachSave.LunchTitle}

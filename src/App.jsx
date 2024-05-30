@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Link } from "react-router-dom";
 import "react-day-picker/dist/style.css";
 
+import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import SavedMealPlans from "./Pages/SavedMealPlans";
 
@@ -53,6 +54,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/savedMealPlans" component={SavedMealPlans} />
       </main>
+      <Footer></Footer>
     </div>
   );
 }
