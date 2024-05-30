@@ -38,7 +38,7 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
   return (
     <Card
       variant="filled"
-      maxW="30%"
+      width="20%"
       justify-content="center"
       bg="lighteal"
       margin="10px"
@@ -115,10 +115,10 @@ export default function SavedMealPlanItem({ eachSave, deleteMealPlan }) {
         <Button
           variant="solid"
           colorScheme="teal"
-          style={{ height: "90%", width: "80%", margin: "5px" }}
+          style={{ height: "90%", margin: "2px auto" }}
           onClick={handleEditMealPlan}
         >
-          Edit Meal Plan
+          Edit
         </Button>
         <Button
           variant="solid"

@@ -75,15 +75,9 @@ export default function Home() {
       }}
     >
       <SearchForm performSearch={performSearch} getDay={getDay} />
-      <div style={{}}>
+      <div>
         {!recipeSearch ? (
-          <img
-            src="https://cherwell.org/wp-content/uploads/2024/04/ramadan.webp"
-            alt=""
-            style={{
-              padding: "50px 0",
-            }}
-          />
+          <img src="https://cherwell.org/wp-content/uploads/2024/04/ramadan.webp" />
         ) : (
           <ResultList
             resultListBreakfast={resultListBreakfast}

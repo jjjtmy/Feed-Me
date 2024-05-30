@@ -73,7 +73,13 @@ export default function SavedMealPlans() {
       </p>
       {/* <DayPicker mode="single" selected={selected} onSelect={setSelected} /> */}
 
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexWrap: "wrap",
+        }}
+      >
         {mySavedMealPlans.map((eachSave) => {
           return (
             <SavedMealPlanItem
