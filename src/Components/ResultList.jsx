@@ -128,16 +128,23 @@ export default function ResultList({
           />
         </div>
         <div style={{ display: "flex" }}>
-          {resultListBreakfast.map((recipe) => (
-            <ResultListItem
-              key={recipe.id}
-              eachResult={recipe}
-              selectMeal={() =>
-                selectMeal("Breakfast", recipe.id, recipe.title, recipe.image)
-              }
-              isSelected={selectedMeal.BreakfastID === recipe.id}
-            />
-          ))}
+          {resultListBreakfast.length < 3
+            ? "Please expand your search criteria"
+            : resultListBreakfast.map((recipe) => (
+                <ResultListItem
+                  key={recipe.id}
+                  eachResult={recipe}
+                  selectMeal={() =>
+                    selectMeal(
+                      "Breakfast",
+                      recipe.id,
+                      recipe.title,
+                      recipe.image
+                    )
+                  }
+                  isSelected={selectedMeal.BreakfastID === recipe.id}
+                />
+              ))}
         </div>
       </ul>
 
@@ -158,16 +165,18 @@ export default function ResultList({
           />
         </div>
         <div style={{ display: "flex" }}>
-          {resultListLunch.map((recipe) => (
-            <ResultListItem
-              key={recipe.id}
-              eachResult={recipe}
-              selectMeal={() =>
-                selectMeal("Lunch", recipe.id, recipe.title, recipe.image)
-              }
-              isSelected={selectedMeal.LunchID === recipe.id}
-            />
-          ))}
+          {resultListLunch.length < 3
+            ? "Please expand your search criteria"
+            : resultListLunch.map((recipe) => (
+                <ResultListItem
+                  key={recipe.id}
+                  eachResult={recipe}
+                  selectMeal={() =>
+                    selectMeal("Lunch", recipe.id, recipe.title, recipe.image)
+                  }
+                  isSelected={selectedMeal.LunchID === recipe.id}
+                />
+              ))}
         </div>
       </ul>
 
@@ -188,16 +197,18 @@ export default function ResultList({
           />
         </div>
         <div style={{ display: "flex" }}>
-          {resultListDinner.map((recipe) => (
-            <ResultListItem
-              key={recipe.id}
-              eachResult={recipe}
-              selectMeal={() =>
-                selectMeal("Dinner", recipe.id, recipe.title, recipe.image)
-              }
-              isSelected={selectedMeal.DinnerID === recipe.id}
-            />
-          ))}
+          {resultListDinner.length < 3
+            ? "Please expand your search criteria"
+            : resultListDinner.map((recipe) => (
+                <ResultListItem
+                  key={recipe.id}
+                  eachResult={recipe}
+                  selectMeal={() =>
+                    selectMeal("Dinner", recipe.id, recipe.title, recipe.image)
+                  }
+                  isSelected={selectedMeal.DinnerID === recipe.id}
+                />
+              ))}
         </div>
       </ul>
 
